@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Refer() {
   const [email, setEmail] = useState("");
@@ -14,11 +16,16 @@ function Refer() {
       }),
     });
     const data = await res.json();
-    // setResponse(data.success || data.error);
+    if (data.success) {
+      toast.success("Email sent successfully!");
+    } else {
+      toast.error("Failed to send email. Please try again.");
+    }
   };
 
   return (
     <div className="flex flex-col items-center justify-center p-4">
+      <ToastContainer />
       <h1 className="text-2xl font-bold mb-4 text-blue-600">
         Refer a friend to earn more Deos and Sui!
       </h1>

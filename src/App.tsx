@@ -1,10 +1,13 @@
 import { ConnectButton } from "@mysten/dapp-kit";
 import { Box, Container, Flex, Heading } from "@radix-ui/themes";
 import { WalletStatus } from "./WalletStatus";
+import { useCurrentAccount } from "@mysten/dapp-kit";
 import Refer from "./Refer";
+
 import "./index.css";
 
 function App() {
+  const account = useCurrentAccount();
   return (
     <>
       <Flex
@@ -32,8 +35,7 @@ function App() {
           style={{ background: "var(--gray-a2)", minHeight: 500 }}
         >
           <WalletStatus />
-          <Refer />
-          {/* <EventCreation /> */}
+          {account && <Refer />}
         </Container>
       </Container>
     </>
