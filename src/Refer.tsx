@@ -3,9 +3,20 @@ import React, { useState } from "react";
 function Refer() {
   const [email, setEmail] = useState("");
 
-  const handleClick = () => {
-    alert(`Refer a friend to: ${email}`);
-    // You can add additional logic here to handle the email, such as sending it to a server
+  const sendEmail = async () => {
+    const res = await fetch("http://localhost:3000/api/sendEmail", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        subject: "subject",
+        message: "i love chicken biscuits",
+      }),
+    });
+    const data = await res.json();
+    // setResponse(data.success || data.error);
   };
 
   return (
@@ -21,7 +32,7 @@ function Refer() {
         className="text-black border border-gray-300 p-2 rounded mb-4 w-full max-w-md bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
       />
       <button
-        onClick={handleClick}
+        onClick={sendEmail}
         className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700"
       >
         Refer now
