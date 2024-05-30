@@ -2,6 +2,7 @@ import { ConnectButton } from "@mysten/dapp-kit";
 import { Box, Container, Flex, Heading } from "@radix-ui/themes";
 import { WalletStatus } from "./WalletStatus";
 import EventCreation from "./EventCreation";
+import Refer from "./Refer";
 import "./index.css";
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
           style={{ background: "var(--gray-a2)", minHeight: 500 }}
         >
           <WalletStatus />
+          <Refer />
           <EventCreation />
         </Container>
       </Container>
