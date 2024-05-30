@@ -3,18 +3,18 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const postmark = require('postmark');
 const dotenv = require('dotenv');
+const cors = require('cors');
 
 // Load environment variables from .env file
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
+app.use(bodyParser.json());
+app.use(cors());
 
 // Initialize Postmark client
 const postmarkClient = new postmark.ServerClient(process.env.POSTMARK_API_KEY);
-
-// Middleware to parse JSON bodies
-app.use(bodyParser.json());
 
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
@@ -29,7 +29,7 @@ app.post('/api/sendEmail', (req, res) => {
     }
 
     const emailParams = {
-        "From": "gardenialiu@college.harvard.edu",
+        "From": "yuenler@gbstem.org",
         "To": email,
         "Subject": subject,
         "TextBody": message
