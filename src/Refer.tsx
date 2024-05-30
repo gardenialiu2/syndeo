@@ -22,7 +22,7 @@ function Refer() {
   return (
     <div className="flex flex-col items-center justify-center p-4">
       <h1 className="text-2xl font-bold mb-4 text-blue-600">
-        Refer a friend to earn more deos!
+        Refer a friend to earn more Deos and Sui!
       </h1>
       <input
         type="email"

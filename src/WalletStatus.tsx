@@ -7,7 +7,7 @@ export function WalletStatus() {
 
   return (
     <Container my="2">
-      <Heading mb="2">Wallet Status</Heading>
+      <Heading mb="2">Wallet $tatus</Heading>
 
       {account ? (
         <Flex direction="column">
