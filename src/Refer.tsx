@@ -20,7 +20,7 @@ function Refer() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center bg-gray-100 p-4">
+    <div className="flex flex-col items-center justify-center p-4">
       <h1 className="text-2xl font-bold mb-4 text-blue-600">
         Refer a friend to earn more deos!
       </h1>
