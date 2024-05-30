@@ -35,7 +35,9 @@ function App() {
           style={{ background: "var(--gray-a2)", minHeight: 500 }}
         >
           <WalletStatus />
-          {account && <Refer />}
+          {account && <Refer
+          referrerEmail={account?.label}
+          />}
         </Container>
       </Container>
     </>

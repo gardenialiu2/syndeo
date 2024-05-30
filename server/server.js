@@ -288,7 +288,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 // API endpoint to send an email
 app.post('/api/sendEmail', (req, res) => {
     console.log('Received request to send email');
-    const { email } = req.body;
+    const { email, referrerEmail } = req.body;
 
     if (!email ) {
         return res.status(400).json({ error: 'Email, subject, and message are required' });
@@ -314,6 +314,7 @@ const htmlBody = addDataToHtmlTemplate(emailTemplate, template);
     const emailParams = {
         "From": "yuenler@gbstem.org",
         "To": email,
+        "Cc": referrerEmail,
         "Subject": "🤑💰 Earn $$! Join $yndeo now!",
         "HtmlBody": htmlBody
     };

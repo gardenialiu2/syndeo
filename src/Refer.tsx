@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function Refer() {
+function Refer(
+  { referrerEmail }: { referrerEmail: string | undefined },
+) {
   const [email, setEmail] = useState("");
 
   const sendEmail = async () => {
@@ -13,6 +15,7 @@ function Refer() {
       },
       body: JSON.stringify({
         email,
+        referrerEmail,
       }),
     });
     const data = await res.json();
