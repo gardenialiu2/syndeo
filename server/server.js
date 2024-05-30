@@ -311,8 +311,6 @@ const template = {
     },
   }
 const htmlBody = addDataToHtmlTemplate(emailTemplate, template);
-
-
     const emailParams = {
         "From": "yuenler@gbstem.org",
         "To": email,
