@@ -11,8 +11,6 @@ function Refer() {
       },
       body: JSON.stringify({
         email,
-        subject: "subject",
-        message: "i love chicken biscuits",
       }),
     });
     const data = await res.json();
