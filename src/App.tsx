@@ -34,7 +34,7 @@ function App() {
         >
           <WalletStatus />
           <Refer />
-          <EventCreation />
+          {/* <EventCreation /> */}
         </Container>
       </Container>
     </>
