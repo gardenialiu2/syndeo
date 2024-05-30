@@ -1,7 +1,6 @@
 import { ConnectButton } from "@mysten/dapp-kit";
 import { Box, Container, Flex, Heading } from "@radix-ui/themes";
 import { WalletStatus } from "./WalletStatus";
-import EventCreation from "./EventCreation";
 import Refer from "./Refer";
 import "./index.css";
 
@@ -18,7 +17,7 @@ function App() {
         }}
       >
         <Box>
-          <Heading>Syndeo</Heading>
+          <Heading>$yndeo</Heading>
         </Box>
 
         <Box>
