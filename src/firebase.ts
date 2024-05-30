@@ -6,13 +6,14 @@ import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID",
-};
+    apiKey: "AIzaSyAfmXn0V6KRiXlbZD0E7jYSlmrWbeh2C4c",
+    authDomain: "syndeo-62c78.firebaseapp.com",
+    projectId: "syndeo-62c78",
+    storageBucket: "syndeo-62c78.appspot.com",
+    messagingSenderId: "395661814276",
+    appId: "1:395661814276:web:05b157813a9ea48c186351",
+    measurementId: "G-PG8JKHR9XZ"
+  };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
