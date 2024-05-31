@@ -226,7 +226,7 @@ const emailTemplate = `<!doctype html>
                                                     style="font-family:Open Sans, Helvetica, Arial, sans-serif;font-size:14px;line-height:22px;text-align:center;color:#797e82;">
                                                     <p style="margin: 10px 0"><a target="_blank"
                                                             rel="noopener noreferrer" style="color: darkblue"
-                                                            href="https://syndeo.org"><span
+                                                            href="https://trysyndeo.vercel.app/"><span
                                                                 style="color: darkblue">Main</span></a> <span
                                                             style="color: #797e82">&nbsp; &nbsp;|&nbsp; &nbsp;</span> <a
                                                             target="_blank" rel="noopener noreferrer"
@@ -299,14 +299,14 @@ const template = {
     data: {
         subject: 'Join $yndeo!!',
         action: {
-          link: 'http://localhost:5173/',
+          link: 'https://trysyndeo.vercel.app/',
           name: 'Join $yndeo',
           description:
-            "Click here to sign up: http://localhost:5173/. You'll earn 5 Deos and Sui and so will your referrer! Cash out whenever, or refer more people to earn more!",
+            "Click here to sign up: https://trysyndeo.vercel.app/. You'll earn 5 Deos and Sui and so will your referrer! Cash out whenever, or refer more people to earn more!",
         },
       app: {
         name: 'Syndeo',
-        link: 'http://localhost:5173/',
+        link: 'https://trysyndeo.vercel.app/',
       },
     },
   }
