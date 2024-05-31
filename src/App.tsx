@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ConnectButton } from "@mysten/dapp-kit";
 import {
   Box,
@@ -29,6 +29,14 @@ function App() {
   const address = account?.address;
   const [profiles, setProfiles] = useState([] as any[]);
   const [following, setFollowing] = useState<string[]>([]);
+  const [userExists, setUserExists] = useState<boolean>(true);
+  const [expandedProfiles, setExpandedProfiles] = useState<Set<number>>(new Set());
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [university, setUniversity] = useState("");
+  const [bio, setBio] = useState("");
+  const [location, setLocation] = useState("");
 
   const fetchFollowing = async () => {
     const currentUserEmail = account?.label;
@@ -118,15 +126,40 @@ function App() {
     const querySnapshot = await getDocs(q);
 
     if (querySnapshot.empty) {
-      // No document with the email exists, add it to the collection
-      await addDoc(profilesRef, {
-        email,
-        address,
-      });
-      console.log("Document added with email:", email);
+      // No document with the email exists
+      setUserExists(false);
     } else {
       console.log("Document already exists with email:", email);
     }
+  };
+
+  const handleSubmit = async () => {
+    const email = account?.label;
+    const profilesRef = collection(db, "profiles");
+
+    await addDoc(profilesRef, {
+      email,
+      address,
+      firstName,
+      lastName,
+      university,
+      bio,
+      location,
+    });
+    console.log("Document added with email:", email);
+    setUserExists(true);
+  };
+
+  const toggleProfileExpand = (index: number) => {
+    setExpandedProfiles((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(index)) {
+        newSet.delete(index);
+      } else {
+        newSet.add(index);
+      }
+      return newSet;
+    });
   };
 
   useEffect(() => {
@@ -165,7 +198,62 @@ function App() {
           <WalletStatus />
           {account && (
             <div>
+              {!userExists && (
+                <div className="max-w-md mx-auto p-6 bg-white rounded-md shadow-md">
+                  <h2 className="text-2xl font-bold mb-4">Create Your Profile</h2>
+                  <div className="mb-4">
+                    <label className="block text-gray-700">First Name</label>
+                    <input
+                      type="text"
+                      className="mt-1 p-2 w-full border rounded-md"
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-gray-700">Last Name</label>
+                    <input
+                      type="text"
+                      className="mt-1 p-2 w-full border rounded-md"
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-gray-700">University</label>
+                    <input
+                      type="text"
+                      className="mt-1 p-2 w-full border rounded-md"
+                      value={university}
+                      onChange={(e) => setUniversity(e.target.value)}
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-gray-700">Short Bio</label>
+                    <input
+                      type="text"
+                      className="mt-1 p-2 w-full border rounded-md"
+                      value={bio}
+                      onChange={(e) => setBio(e.target.value)}
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-gray-700">Location</label>
+                    <input
+                      type="text"
+                      className="mt-1 p-2 w-full border rounded-md"
+                      value={location}
+                      onChange={(e) => setLocation(e.target.value)}
+                    />
+                  </div>
+                  <Button onClick={handleSubmit} className="mt-4">
+                    Submit
+                  </Button>
+                </div>
+              )}
               <Refer referrerEmail={account?.label} />
+              {userExists && (
+                <div>
               <Heading>Find others on $yndeo!</Heading>
               <Box mt="4">
                 {profiles.map((profile, index) => (
@@ -175,20 +263,35 @@ function App() {
                     style={{
                       background: "var(--gray-a5)",
                     }}
+                    onClick={() => toggleProfileExpand(index)}
+                    className="cursor-pointer"
                   >
                     <Flex>
                       <div className="pe-5">
-                        <Text>{profile.email}</Text>
+                        <Text>{profile.firstName ? `${profile.firstName} ${profile.lastName}` : profile.email}</Text>
                       </div>
-                      <Button onClick={() => handleFollow(profile)}>
+                      <Button onClick={(e) => {
+                        e.stopPropagation();
+                        handleFollow(profile);
+                      }}>
                         {following.includes(profile.email)
                           ? "Unfollow"
                           : "Follow"}
                       </Button>
                     </Flex>
+                    {expandedProfiles.has(index) && (
+                     <div className="mt-4">
+                     {profile.email && <p><strong>Email:</strong> {profile.email}</p>}
+                     {profile.university && <p><strong>University:</strong> {profile.university}</p>}
+                     {profile.bio && <p><strong>Bio:</strong> {profile.bio}</p>}
+                     {profile.location && <p><strong>Location:</strong> {profile.location}</p>}
+                   </div>
+                    )}
                   </Card>
                 ))}
               </Box>
+              </div>
+              )}
             </div>
           )}
         </Container>
