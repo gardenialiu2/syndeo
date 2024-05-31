@@ -302,7 +302,7 @@ const template = {
           link: 'https://syndeo.org',
           name: 'Join $yndeo',
           description:
-            "Click here to sign up: http://syndeo.io. You'll earn Deos and Sui and so will your referrer! Cash out whenever, or refer more people to earn more!",
+            "Click here to sign up: http://syndeo.org. You'll earn Deos and Sui and so will your referrer! Cash out whenever, or refer more people to earn more!",
         },
       app: {
         name: 'Syndeo',
