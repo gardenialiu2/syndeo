@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ConnectButton } from "@mysten/dapp-kit";
 import {
   Box,
