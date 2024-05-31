@@ -8,7 +8,7 @@ function Refer(
   const [email, setEmail] = useState("");
 
   const sendEmail = async () => {
-    const res = await fetch("http://localhost:3000/api/sendEmail", {
+    const res = await fetch("/api/sendEmail", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
