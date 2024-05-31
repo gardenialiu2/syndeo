@@ -163,30 +163,34 @@ function App() {
           style={{ background: "var(--gray-a2)", minHeight: 500 }}
         >
           <WalletStatus />
-          {account && <Refer referrerEmail={account?.label} />}
-
-          {/* display everyone's profile in a pretty way */}
-          <Heading>Find others on $yndeo!</Heading>
-          <Box mt="4">
-            {profiles.map((profile, index) => (
-              <Card
-                key={index}
-                mb="4"
-                style={{
-                  background: "var(--gray-a5)",
-                }}
-              >
-                <Flex>
-                  <div className="pe-5">
-                    <Text>{profile.email}</Text>
-                  </div>
-                  <Button onClick={() => handleFollow(profile)}>
-                    {following.includes(profile.email) ? "Unfollow" : "Follow"}
-                  </Button>
-                </Flex>
-              </Card>
-            ))}
-          </Box>
+          {account && (
+            <div>
+              <Refer referrerEmail={account?.label} />
+              <Heading>Find others on $yndeo!</Heading>
+              <Box mt="4">
+                {profiles.map((profile, index) => (
+                  <Card
+                    key={index}
+                    mb="4"
+                    style={{
+                      background: "var(--gray-a5)",
+                    }}
+                  >
+                    <Flex>
+                      <div className="pe-5">
+                        <Text>{profile.email}</Text>
+                      </div>
+                      <Button onClick={() => handleFollow(profile)}>
+                        {following.includes(profile.email)
+                          ? "Unfollow"
+                          : "Follow"}
+                      </Button>
+                    </Flex>
+                  </Card>
+                ))}
+              </Box>
+            </div>
+          )}
         </Container>
       </Container>
     </>

@@ -299,14 +299,14 @@ const template = {
     data: {
         subject: 'Join $yndeo!!',
         action: {
-          link: 'https://syndeo.org',
+          link: 'http://localhost:5173/',
           name: 'Join $yndeo',
           description:
-            "Click here to sign up: http://syndeo.io. You'll earn Deos and Sui and so will your referrer! Cash out whenever, or refer more people to earn more!",
+            "Click here to sign up: http://localhost:5173/. You'll earn 5 Deos and Sui and so will your referrer! Cash out whenever, or refer more people to earn more!",
         },
       app: {
         name: 'Syndeo',
-        link: 'https://syndeo.org',
+        link: 'http://localhost:5173/',
       },
     },
   }
