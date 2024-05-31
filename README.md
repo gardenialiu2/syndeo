@@ -33,3 +33,6 @@ To build your app for deployment you can run
 ```bash
 pnpm build
 ```
+
+## Try here
+https://trysyndeo.vercel.app/
